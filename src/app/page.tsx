@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { withBase } from '@shared/lib/path';
+import nextLogo from '@/../public/next.svg';
 
 export default function Home() {
   return (
@@ -7,7 +7,7 @@ export default function Home() {
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between bg-white px-16 py-32 sm:items-start dark:bg-black">
         <Image
           className="dark:invert"
-          src={withBase('/next.svg')}
+          src={nextLogo}
           alt="Next.js logo"
           width={100}
           height={20}
@@ -44,7 +44,7 @@ export default function Home() {
           >
             <Image
               className="dark:invert"
-              src="/vercel.svg"
+              src="vercel.svg"
               alt="Vercel logomark"
               width={16}
               height={16}
