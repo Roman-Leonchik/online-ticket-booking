@@ -2,7 +2,7 @@
 
 <p align="center"><img src="./.github/readme_assets/logo.svg" width="300"></p>
 
-<h2 align="center"><a href="https://roman-leonchik.github.io/online-ticket-booking/" target="_blank">Demo</a></h2>
+<h2 align="center"><a href="https://roman-leonchik.github.io/online-ticket-booking/">🚀 Посмотреть Demo</a></h2>
 
 ## Description
 
