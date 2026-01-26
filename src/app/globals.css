@@ -2,8 +2,8 @@
 
 @layer base {
   :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    --background: #000000;
+    --foreground: #ffffff;
   }
 }
 
