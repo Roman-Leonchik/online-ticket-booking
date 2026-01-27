@@ -13,7 +13,7 @@ import globals from 'globals';
 const eslintConfig = [
   js.configs.recommended,
   {
-    files: ['src/**/*.{ts,tsx}'],
+    files: ['**/*.{ts,tsx,js,jsx}'],
     languageOptions: {
       parser: tsParser,
       ecmaVersion: 'latest',
@@ -21,6 +21,7 @@ const eslintConfig = [
       globals: {
         ...globals.browser,
         ...globals.node,
+        RequestInit: 'readonly',
       },
     },
     plugins: {
