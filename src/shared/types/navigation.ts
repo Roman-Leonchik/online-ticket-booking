@@ -4,3 +4,8 @@ export interface NavItem {
   label: string;
   href: Route;
 }
+
+export interface TimeItem {
+  time: string;
+  href: Route;
+}

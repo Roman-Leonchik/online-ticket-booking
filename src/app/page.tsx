@@ -1,11 +1,5 @@
-import { Metadata } from 'next';
-import { MoviesPage } from '@pages/movies/ui';
+import { redirect } from 'next/navigation';
 
-export const metadata: Metadata = {
-  title: 'Каталог фильмов | CinemaBooking',
-  description: 'Выбор фильмов онлайн',
-};
-
-export default function Movies() {
-  return <MoviesPage />;
+export default function RootPage() {
+  redirect('/movies');
 }
