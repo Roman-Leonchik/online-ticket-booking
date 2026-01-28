@@ -4,7 +4,7 @@ import { TimeLink } from '@/shared/ui/time-link';
 
 interface BaseSession {
   id: number;
-  startTime: Date;
+  startTime: string;
 }
 
 interface SessionScheduleProps<T extends BaseSession> {
@@ -30,7 +30,7 @@ export const SessionSchedule = <T extends BaseSession>({
                   <li key={`${formatDateByTime(session.startTime)}`}>
                     <TimeLink
                       time={formatDateByTime(session.startTime)}
-                      href={`/tickets/${session.id}`}
+                      href={`/session/${session.id}`}
                     />
                   </li>
                 ))}

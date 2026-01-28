@@ -1,7 +1,7 @@
 import { formatDate } from '@/shared/lib/format/date';
 
 interface BaseSession {
-  startTime: Date;
+  startTime: string;
 }
 
 export const getGroupedSessions = <T extends BaseSession>(sessions: T[], groupKey: keyof T) => {
@@ -12,7 +12,7 @@ export const getGroupedSessions = <T extends BaseSession>(sessions: T[], groupKe
   const grouped: Record<string, Record<string, T[]>> = {};
 
   sorted.forEach((session) => {
-    const dateKey = formatDate(session.startTime);
+    const dateKey = formatDate(session.startTime.toString());
     const subKey = String(session[groupKey]);
 
     if (!grouped[dateKey]) {

@@ -4,6 +4,8 @@
   --color-black: #000000;
   --color-white: #ffffff;
   --color-error: #c37070;
+  --color-expectation: #587ebe;
+  --color-choice: #d7de35;
 }
 
 @layer base {

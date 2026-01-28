@@ -10,7 +10,7 @@ export interface CinemasSessionsResponse {
   id: number;
   movieId: number;
   cinemaId: number;
-  startTime: Date;
+  startTime: string;
 }
 
 export const getCinemas = async (): Promise<CinemasResponse[]> => {
