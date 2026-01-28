@@ -9,3 +9,8 @@ export interface TimeItem {
   time: string;
   href: Route;
 }
+
+export interface ViewItem {
+  text?: string;
+  href: Route;
+}
