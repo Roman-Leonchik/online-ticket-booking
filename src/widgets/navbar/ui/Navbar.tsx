@@ -7,7 +7,7 @@ interface NavbarProps {
 }
 
 const navItems: NavItem[] = [
-  { label: 'Фильмы', href: '/' },
+  { label: 'Фильмы', href: '/movies' },
   { label: 'Кинотеатры', href: '/cinema' },
   { label: 'Мои билеты', href: '/tickets' },
 ];

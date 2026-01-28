@@ -9,7 +9,7 @@ export const ButtonExit = () => {
 
     Cookies.remove('jwt_token');
 
-    window.location.href = '/';
+    window.location.href = '/movies';
   };
 
   return (
