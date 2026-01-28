@@ -14,7 +14,7 @@ export interface MovieSessionsResponse {
   id: number;
   movieId: number;
   cinemaId: number;
-  startTime: Date;
+  startTime: string;
 }
 
 export const getMovies = async (): Promise<MoviesResponse[]> => {

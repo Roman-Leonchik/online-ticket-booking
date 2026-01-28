@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { TicketsPage } from '@pages/tickets/ui';
+import { TicketsPage } from '@/pages/tickets/ui/Page';
 
 export const metadata: Metadata = {
   title: 'Билеты',

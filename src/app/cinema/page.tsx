@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { CinemaPage } from '@pages/cinema/ui';
+import { CinemaPage } from '@/pages/cinema/ui/Page';
 
 export const metadata: Metadata = {
   title: 'Кинотеатры',

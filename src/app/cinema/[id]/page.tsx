@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getCinemas } from '@/shared/api/cinemas';
-import { CinemaDetailsPage } from '@/pages/cinema-details/ui';
+import { CinemaDetailsPage } from '@/pages/cinema-details/ui/Page';
 
 interface CinemaProps {
   params: Promise<{ id: string }>;

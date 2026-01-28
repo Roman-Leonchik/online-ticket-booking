@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getMovies } from '@/shared/api/movies';
-import { MovieDetailsPage } from '@/pages/movie-details/ui';
+import { MovieDetailsPage } from '@/pages/movie-details/ui/Page';
 
 interface MovieProps {
   params: Promise<{ id: string }>;

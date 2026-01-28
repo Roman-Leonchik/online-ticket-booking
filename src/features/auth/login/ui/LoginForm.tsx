@@ -58,7 +58,7 @@ export const LoginForm = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-6 cursor-pointer self-center rounded-lg border px-8 py-4 text-xl"
+        className="mt-6 cursor-pointer self-center rounded-lg border px-8 py-4 text-xl transition-all hover:bg-gray-500/50"
       >
         Войти
       </button>

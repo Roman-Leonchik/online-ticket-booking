@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { AuthPage } from '@pages/auth/ui';
+import { AuthPage } from '@/pages/auth/ui/Page';
 
 export const metadata: Metadata = {
   title: 'Авторизация',
