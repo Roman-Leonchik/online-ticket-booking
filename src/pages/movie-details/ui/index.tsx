@@ -5,10 +5,9 @@ import { getCinemas } from '@/shared/api/cinemas';
 import { TextError } from '@/shared/ui/text-error';
 import { API_URL } from '@/shared/api/base';
 import { formatTime } from '@/shared/lib/format/time';
-import { formatDateByTime } from '@/shared/lib/format/date';
-import { getSortedAndGroupedSessions } from '@/shared/lib/sort/sessions-movies';
+import { getGroupedSessions } from '@/shared/lib/sort/group-sessions';
 import { findById } from '@/shared/lib/find/find-by-id';
-import { TimeLink } from '@/shared/ui/time-link';
+import { SessionSchedule } from '@/shared/ui/session-schedule/session-schedule';
 
 interface MovieDetailsProps {
   id: string;
@@ -22,7 +21,7 @@ export const MovieDetailsPage = async ({ id }: MovieDetailsProps) => {
   ]);
 
   const movie = allMovies.find((m) => String(m.id) === id);
-  const groupedMovieByDate = getSortedAndGroupedSessions(sessionsMovieData);
+  const groupedMovieByDate = getGroupedSessions(sessionsMovieData, 'cinemaId');
 
   if (!movie) {
     notFound();
@@ -54,28 +53,10 @@ export const MovieDetailsPage = async ({ id }: MovieDetailsProps) => {
             </div>
           </div>
           <ul>
-            {Object.entries(groupedMovieByDate).map(([dateMovie, cinemas]) => (
-              <div key={dateMovie} className="mb-8 flex flex-col gap-6">
-                <h3 className="border-b-2 px-4 py-2 text-xl">{dateMovie}</h3>
-                {Object.entries(cinemas).map(([idCinema, dateMovie]) => (
-                  <div key={`cinema-${idCinema}`} className="flex items-center gap-6 px-4">
-                    <span className="text-2xl">
-                      {findById(allCinemas, idCinema)?.name || 'Cinema'}
-                    </span>
-                    <ul className="ml-auto flex gap-6">
-                      {dateMovie.map((movie) => (
-                        <li key={formatDateByTime(movie.startTime)}>
-                          <TimeLink
-                            time={formatDateByTime(movie.startTime)}
-                            href={`tikets/${movie.movieId}`}
-                          />
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            ))}
+            <SessionSchedule
+              data={groupedMovieByDate}
+              renderTitle={(id) => findById(allCinemas, id)?.name || 'Кинонеатр'}
+            />
           </ul>
         </div>
       )}

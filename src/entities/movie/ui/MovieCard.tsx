@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { ViewLink } from '@/shared/ui/view-link';
 import Image from 'next/image';
 import { API_URL } from '@/shared/api/base';
 import { formatTime } from '@/shared/lib/format/time';
@@ -28,12 +28,7 @@ export const MovieCard = ({ id, title, lengthMinutes, posterImage, rating }: Mov
       <span className="text-center">{formatTime(lengthMinutes)}</span>
       <div className="col-span-2 flex items-center gap-4">
         <span className="w-12.5">{rating}</span>
-        <Link
-          href={`/movies/${id}`}
-          className="flex rounded-lg border p-3 transition-all hover:bg-gray-500/50"
-        >
-          Посмотреть сеансы
-        </Link>
+        <ViewLink href={`/movies/${id}`} />
       </div>
     </div>
   );
