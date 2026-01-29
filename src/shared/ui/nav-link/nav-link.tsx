@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { clsx } from 'clsx';
+import { cn } from '@/shared/lib/utils';
 import { NavItem } from '@shared/types/navigation';
 
 export const NavLink = ({ label, href }: NavItem) => {
@@ -12,7 +12,7 @@ export const NavLink = ({ label, href }: NavItem) => {
   return (
     <Link
       href={href}
-      className={clsx(
+      className={cn(
         'flex w-full border-t border-b border-white/0 p-4 text-2xl transition-all duration-300',
         isActive ? 'border-white bg-gray-500/30' : 'hover:bg-gray-500/10',
       )}

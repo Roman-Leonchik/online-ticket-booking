@@ -31,6 +31,7 @@ export const SessionPage = async ({ sessionId }: Props) => {
         <li>{`Время: ${formatFullDateTime(session.startTime)}`}</li>
       </ul>
       <SeatSelection
+        movieSessionId={sessionId}
         rows={session.seats.rows}
         seatsPerRow={session.seats.seatsPerRow}
         {...session}
