@@ -2,24 +2,38 @@
 
 import React from 'react';
 import Cookies from 'js-cookie';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { cn } from '@/shared/lib/utils';
 import { useRouter } from 'next/navigation';
-import { getSeatKey } from '@/entities/seat/lib';
+import { getSeatKey, parseSeatKeysToObjects } from '@/entities/seat/lib';
+import { movieBookings } from '@/shared/api/session';
 
 interface SeatSelectionProps {
+  movieSessionId: string;
   rows: number;
   seatsPerRow: number;
   bookedSeats: { rowNumber: number; seatNumber: number }[];
 }
 
-export const SeatSelection = ({ rows, seatsPerRow, bookedSeats }: SeatSelectionProps) => {
+export const SeatSelection = ({
+  movieSessionId,
+  rows,
+  seatsPerRow,
+  bookedSeats,
+}: SeatSelectionProps) => {
   const router = useRouter();
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
+  const [isAuth, setIsAuth] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    setIsAuth(!!Cookies.get('jwt_token'));
+    setIsHydrated(true);
+  }, []);
+
+  if (!isHydrated) return <div className="h-10 w-10" />;
 
   const bookedSet = new Set(bookedSeats.map((s) => getSeatKey(s.rowNumber, s.seatNumber)));
-
-  const isAuth = !!Cookies.get('jwt_token');
 
   const toggleSeat = (event: React.MouseEvent<HTMLButtonElement>, key: string) => {
     event.preventDefault();
@@ -29,13 +43,17 @@ export const SeatSelection = ({ rows, seatsPerRow, bookedSeats }: SeatSelectionP
     );
   };
 
-  const handleReservation = (event: React.MouseEvent<HTMLButtonElement>): void => {
+  const handleReservation = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     if (!isAuth) {
       router.push('/auth');
     } else {
-      console.log(selectedSeats);
+      const data = {
+        seats: parseSeatKeysToObjects(selectedSeats),
+      };
+
+      await movieBookings(movieSessionId, data);
       router.push('/tickets');
     }
   };
@@ -43,6 +61,17 @@ export const SeatSelection = ({ rows, seatsPerRow, bookedSeats }: SeatSelectionP
   return (
     <>
       <div className="items-[safe_center] flex w-full flex-col items-center gap-3 overflow-x-auto p-4">
+        <div className="mb-4 flex items-center gap-2">
+          <span className="w-14" />
+          {Array.from({ length: seatsPerRow }).map((_, seatIndex) => (
+            <span
+              key={`header-seat-${seatIndex}`}
+              className="flex w-14 items-center justify-center text-2xl"
+            >
+              {seatIndex + 1}
+            </span>
+          ))}
+        </div>
         {Array.from({ length: rows }).map((_, rowIndex) => {
           const rowNum = rowIndex + 1;
 
@@ -60,7 +89,7 @@ export const SeatSelection = ({ rows, seatsPerRow, bookedSeats }: SeatSelectionP
                 return (
                   <button
                     key={key}
-                    disabled={isBooked || !isAuth}
+                    disabled={Boolean(isBooked) || Boolean(!isAuth)}
                     onClick={(e) => toggleSeat(e, key)}
                     title={`Ряд ${rowNum}, Место ${seatNum}`}
                     className={cn(
