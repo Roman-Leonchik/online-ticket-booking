@@ -1,9 +1,26 @@
-<h1 align="center">Online ticket booking</h1>
+<h1 align="center">🎬 CinemaBooking - Тестовая платформа для бронирования билетов в кино.</h1>
 
 <p align="center"><img src="./.github/readme_assets/logo.svg" width="300"></p>
 
-<h2 align="center"><a href="https://roman-leonchik.github.io/online-ticket-booking/">🚀 Посмотреть Demo</a></h2>
+## Технологический стек
 
-## Description
+**Framework**: Next.js
+**Architecture**: FSD
+**Styling**: Tailwind CSS
+**Testing**: Vitest
 
-<p>Description text</p>
+### 1. Требования
+
+Для полноценной работы **необходим запущенный бэкенд-сервер с данными** из отдельного репозитория.
+
+### 2. Установка зависимостей
+
+npm install
+
+### 3. Запуск в режиме разработки
+
+npm dev
+
+### 4. Запуск тестов
+
+npm test
