@@ -2,11 +2,15 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
-  output: 'export',
-  basePath: '/online-ticket-booking',
-  assetPrefix: '/online-ticket-booking/',
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3022',
+        pathname: '/static/images/**',
+      },
+    ],
   },
 };
 

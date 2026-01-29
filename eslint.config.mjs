@@ -7,16 +7,22 @@ import boundariesPlugin from 'eslint-plugin-boundaries';
 import prettierPlugin from 'eslint-plugin-prettier';
 import tsParser from '@typescript-eslint/parser';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
+import globals from 'globals';
 
 /** @type {import('eslint').Linter.Config[]} */
 const eslintConfig = [
   js.configs.recommended,
   {
-    files: ['src/**/*.{ts,tsx}'],
+    files: ['**/*.{ts,tsx,js,jsx}'],
     languageOptions: {
       parser: tsParser,
       ecmaVersion: 'latest',
       sourceType: 'module',
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        RequestInit: 'readonly',
+      },
     },
     plugins: {
       '@typescript-eslint': tsPlugin,
