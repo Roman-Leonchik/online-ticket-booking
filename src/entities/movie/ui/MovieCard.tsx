@@ -1,7 +1,7 @@
 import { ViewLink } from '@/shared/ui/view-link';
 import Image from 'next/image';
 import { API_URL } from '@/shared/api/base';
-import { formatTime } from '@/shared/lib/format/time';
+import { formatTime } from '@/shared/lib/format/time/time';
 
 interface MovieCardProps {
   id: number;

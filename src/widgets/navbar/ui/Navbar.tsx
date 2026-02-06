@@ -1,6 +1,6 @@
 import { NavLink } from '@shared/ui/nav-link';
 import { NavItem } from '@shared/types/navigation';
-import { ButtonExit } from '@/shared/ui/button-exit';
+import { ButtonExit } from '@/features/auth/button-exit';
 
 interface NavbarProps {
   isAuth: boolean;

@@ -1,4 +1,4 @@
-import { BookingsResponse } from '@/shared/api/users';
+import { BookingsResponse } from '@/shared/types/users';
 
 export interface SessionInfo {
   startTime: string;

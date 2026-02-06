@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@/shared/config/utils';
 import { NavItem } from '@shared/types/navigation';
 
 export const NavLink = ({ label, href }: NavItem) => {

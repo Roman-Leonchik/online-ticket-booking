@@ -1,32 +1,10 @@
 import { apiFetch } from './base';
 import Cookies from 'js-cookie';
-
-export interface Seats {
-  rows: number;
-  seatsPerRow: number;
-}
-
-export interface Seat {
-  rowNumber: number;
-  seatNumber: number;
-}
-
-export interface MovieSessionsResponse {
-  id: number;
-  movieId: number;
-  cinemaId: number;
-  startTime: string;
-  seats: Seats;
-  bookedSeats: Seat[];
-}
-
-export interface MovieBookingsResponse {
-  bookingId: string;
-}
-
-export interface MovieBookingsRequest {
-  seats: Seat[];
-}
+import {
+  MovieSessionsResponse,
+  MovieBookingsResponse,
+  MovieBookingsRequest,
+} from '../types/session';
 
 export const getMovieSessions = async (id: string): Promise<MovieSessionsResponse> => {
   return apiFetch(`/movieSessions/${id}`, {

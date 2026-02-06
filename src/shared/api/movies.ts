@@ -1,21 +1,5 @@
 import { apiFetch } from './base';
-
-export interface MoviesResponse {
-  id: number;
-  title: string;
-  description: string;
-  year: number;
-  lengthMinutes: number;
-  posterImage: string;
-  rating: number;
-}
-
-export interface MovieSessionsResponse {
-  id: number;
-  movieId: number;
-  cinemaId: number;
-  startTime: string;
-}
+import { MoviesResponse, MovieSessionsResponse } from '../types/movies';
 
 export const getMovies = async (): Promise<MoviesResponse[]> => {
   return apiFetch('/movies', {
