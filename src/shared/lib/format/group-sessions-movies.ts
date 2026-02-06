@@ -1,4 +1,4 @@
-import { MovieSessionsResponse } from '@/shared/api/movies';
+import { MovieSessionsResponse } from '@/shared/types/movies';
 import { formatDate } from './date';
 
 type SessionsByCinema = Record<string, MovieSessionsResponse[]>;

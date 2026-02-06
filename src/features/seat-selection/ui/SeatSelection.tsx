@@ -3,7 +3,7 @@
 import React from 'react';
 import Cookies from 'js-cookie';
 import { useState, useEffect } from 'react';
-import { cn } from '@/shared/lib/utils';
+import { cn } from '@/shared/config/utils';
 import { useRouter } from 'next/navigation';
 import { getSeatKey, parseSeatKeysToObjects } from '@/entities/seat/lib';
 import { movieBookings } from '@/shared/api/session';

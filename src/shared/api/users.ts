@@ -1,16 +1,6 @@
 import { apiFetch } from './base';
 import { cookies } from 'next/headers';
-import { Seat } from './session';
-
-export interface BookingsResponse {
-  id: string;
-  userId: number;
-  movieSessionId: number;
-  sessionId: number;
-  bookedAt: string;
-  seats: Seat[];
-  isPaid: boolean;
-}
+import { BookingsResponse } from '../types/users';
 
 export const getBookings = async (): Promise<BookingsResponse[]> => {
   const token = (await cookies()).get('jwt_token')?.value;
